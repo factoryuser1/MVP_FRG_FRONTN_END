@@ -1,0 +1,15 @@
+rsc for react components
+rsf for react functions
+
+node -v
+npm -v
+npm start
+npm run build
+
+npm install bootstrap --save
+
+https://getbootstrap.com/docs/5.0/getting-started/introduction/
+
+localhost:8080/api/frg/soldier
+
+"proxy": "http://localhost:8080"

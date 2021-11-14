@@ -1,25 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Soldiers from "./components/Soldiers";
+import Spouses from "./components/Spouses";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Login from "./components/Login";
+import AddNewSoldier from "./components/AddNewSoldier";
+import AddNewSpouse from "./components/AddNewSpouse";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    return (
+        <div>
+            <Router>
+                <Header/>
+                <div className="container">
+                    <Routes>
+                        <Route exact path="/" element={<Soldiers />}/>
+                        {/*<Route path="/login" element={<Login />}/>*/}
+                        <Route path="/soldier" element={<Soldiers />}/>
+                        <Route path="/spouse" element={<Spouses />}/>
+                        <Route path="/add-soldier" element={<AddNewSoldier />}/>
+                        <Route path="/add-spouse" element={<AddNewSpouse />}/>
+                    </Routes>
+                </div>
+                <Footer/>
+            </Router>
+        </div>
+    );
 }
 
 export default App;
