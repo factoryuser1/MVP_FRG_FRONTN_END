@@ -4,8 +4,7 @@ const Header = () => (
     <div>
         <header>
             <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-
-                <div class="btn-toolbar text-center well">
+                <div className="btn-toolbar text-center well">
                     <a href="https://www.army.mil/standto/archive/2019/08/16//" className="navbar-brand">
                         Welcome to the Family Readiness Group Tracking Application
                     </a>

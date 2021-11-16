@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => (
     <div>
         <footer className="footer">
-            <span className="text-muted">All Rights Reserved. Army Software Factory. MVP Project 2021.  CPT Ammar Masoud.</span>
+            <span className="text-light">Army Software Factory. All Rights Reserved. MVP Project 2021 (Cohort 2). CPT Ammar Masoud.</span>
         </footer>
     </div>
 

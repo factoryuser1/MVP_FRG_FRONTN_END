@@ -1,7 +1,12 @@
 import React from 'react';
+import {Link} from "react-router-dom";
+
+function Soldier({soldier, handleDelete}) {
 
 
-function Soldier({soldier,handleUpdate, handleDelete}) {
+    const handleLocalDelete = (id) => {
+        handleDelete(id);
+    };
     return (
         <tr key={soldier.id}>
             <td>{soldier.id}</td>
@@ -18,11 +23,16 @@ function Soldier({soldier,handleUpdate, handleDelete}) {
             <td>{soldier.soldierRank}</td>
             <td>{soldier.unit}</td>
             <td>{soldier.dodId}</td>
-            <td>{soldier.married}</td>
+            <td>{soldier.married?"Yes": "No"}<button className="btn btn-outline-info">{soldier.married?"Edit": "Add"}</button>
+            </td>
+
             <td>
-                <button className="btn btn-danger">Delete</button>
-                <button className="btn btn-danger">Edit</button>
-                <button className="btn btn-danger">Add Spouse</button>
+                <div className="btn-group">
+                <Link className="btn btn-info" to={`/edit-soldier/${soldier.id}`}>Edit</Link>
+                <button className="btn btn-info" onClick={()=>handleLocalDelete(soldier.id)}>Delete</button>
+
+                {/*<button className="btn btn-danger">Delete</button>*/}
+                </div>
             </td>
         </tr>
     );

@@ -13,3 +13,18 @@ https://getbootstrap.com/docs/5.0/getting-started/introduction/
 localhost:8080/api/frg/soldier
 
 "proxy": "http://localhost:8080"
+
+user react form for forms
+https://react-hook-form.com/
+https://github.com/react-hook-form/react-hook-form
+https://github.com/factoryuser1/react-hook-form
+PrincipalUser principal in the findAll Controller method to setup roles based after setting up Spring Security
+
+
+Pagination and Sorting using Spring Data JPA
+https://www.baeldung.com/spring-data-jpa-pagination
+https://www.baeldung.com/spring-data-jpa-pagination-sorting
+https://www.baeldung.com/rest-api-pagination-in-spring
+https://www.bezkoder.com/spring-boot-pagination-filter-jpa-pageable/
+
+Make it responsive to mobile devices and web browsers and tablets

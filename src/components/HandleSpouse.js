@@ -1,10 +1,10 @@
 import React from 'react';
 
-const AddNewSpouse = () => (
+const HandleSpouse = () => (
     <div>
         <h1>Add New Spouse</h1>
     </div>
 
 );
 
-export default AddNewSpouse;
+export default HandleSpouse;

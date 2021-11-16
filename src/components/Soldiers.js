@@ -2,6 +2,9 @@ import React, {useEffect, useState} from 'react'
 import axios from "axios";
 import Soldier from "./Soldier";
 import {Route} from "react-router-dom";
+import {getSoldiers, addNewSoldier, updateSoldier,
+    deleteSoldier, getSoldierById, getSoldierByEmail}
+    from "../services/SoldierService";
 
 const Soldiers = () => {
     const [soldiers, setSoldiers] = useState([]);
@@ -27,31 +30,23 @@ const Soldiers = () => {
             console.error(e);
         });
     }
+    const handleDelete = async (id) => {
+        await deleteSoldier(id);
+        getAllSoldiers();
+    }
     const handleAdd = async (soldier) => {
-        await axios.post(SOLDIER_URL_WITH_PROXY, soldier);
-        // await axios.post(SOLDIER_URL, soldier);
+        await addNewSoldier(soldier);
         getAllSoldiers();
     }
-
     const handleUpdate = async (soldier) => {
-        await axios.patch(`${SOLDIER_URL_WITH_PROXY}/${soldier.id}`);
-        // await axios.patch(`${SOLDIER_URL}/${soldier.id}`);
+        await updateSoldier(soldier)
         getAllSoldiers();
     }
-    const handleDelete = async (soldier) => {
-        await axios.delete(`${SOLDIER_URL_WITH_PROXY}/${soldier.id}`)
-        // await axios.delete(`${SOLDIER_URL}/${soldier.id}`)
-        getAllSoldiers();
-    }
-
     const handleGetById = async (soldier) => {
-        await axios.get(`${SOLDIER_URL_WITH_PROXY}/${soldier.id}`)
-        // await axios.get(`${SOLDIER_URL}/${soldier.id}`)
+        await getSoldierById(soldier);
     }
-
-    const handleGetByFNameAndLName = async (soldier) => {
-        await axios.get(`${SOLDIER_URL_WITH_PROXY}/${soldier.firstName}&${soldier.last_name}`)
-        // await axios.get(`${SOLDIER_URL}/${soldier.firstName}&${soldier.last_name}`)
+    const handleGetByEmail = async (soldier) => {
+        await getSoldierByEmail(soldier)
     }
 
     return (
@@ -60,6 +55,8 @@ const Soldiers = () => {
             <a href="/add-soldier" className="btn btn-primary mb-2" role="button">Add New Soldier</a>
             <span> </span>
             <a href="/spouse" className="btn btn-primary mb-2" role="button">Display Spouses List</a>
+            <span> </span>
+            <a href="/add-soldier" className="btn btn-outline-info mb-2" role="button">Search Soldier</a>
 
             <table className="table table-bordered table-striped table-hover">
                 <thead>
@@ -79,16 +76,16 @@ const Soldiers = () => {
                     <th>Unit</th>
                     <th>DoDID</th>
                     <th>Married</th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
                 {
-                    soldiers.map((soldier) => {
+                    (soldiers.constructor==[].constructor) && soldiers.map((soldier) => {
                         return (
                             <Soldier
                                 key={soldier.id}
                                 soldier={soldier}
-                                handleUpdate={handleUpdate}
                                 handleDelete={handleDelete}
                             />
                             )
