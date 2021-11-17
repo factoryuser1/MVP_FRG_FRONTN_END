@@ -38,11 +38,15 @@ const Spouses = () => {
         <div className="container">
             <h2 className="text-center">Alpha Company FRG- Spouses List</h2>
 
-            <a href="/add-spouse" className="btn btn-outline-info mb-2" role="button">Add New Spouse</a>
+            <a href="/spouse" className="btn btn-outline-info mb-2" role="button">Add New Spouse</a>
             <span> </span>
             <a href="/soldier" className="btn btn-primary mb-2" role="button">Display Soldiers List</a>
             <span> </span>
             <a href="/spouse" className="btn btn-outline-info mb-2" role="button">Search Spouse</a>
+            <span> </span>
+            <a href="/spouse" className="btn btn-outline-info mb-2" role="button">Export MS Excel</a>
+            <span> </span>
+            <a href="/spouse" className="btn btn-outline-info mb-2" role="button">Generate Mass Email</a>
 
             <table className="table table-bordered table-striped table-hover">
                 <thead>
@@ -64,7 +68,7 @@ const Spouses = () => {
                 </thead>
                 <tbody>
                 {
-                    spouses.map((spouse) => {
+                    (spouses.constructor==[].constructor) && spouses.map((spouse) => {
                             return (
                                 <Spouse
                                     key={spouse.id}

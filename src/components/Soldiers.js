@@ -57,6 +57,10 @@ const Soldiers = () => {
             <a href="/spouse" className="btn btn-primary mb-2" role="button">Display Spouses List</a>
             <span> </span>
             <a href="/add-soldier" className="btn btn-outline-info mb-2" role="button">Search Soldier</a>
+            <span> </span>
+            <a href="/soldier" className="btn btn-outline-info mb-2" role="button">Export MS Excel</a>
+            <span> </span>
+            <a href="/soldier" className="btn btn-outline-info mb-2" role="button">Generate Mass Email</a>
 
             <table className="table table-bordered table-striped table-hover">
                 <thead>

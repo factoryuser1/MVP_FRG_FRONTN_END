@@ -23,7 +23,9 @@ function Soldier({soldier, handleDelete}) {
             <td>{soldier.soldierRank}</td>
             <td>{soldier.unit}</td>
             <td>{soldier.dodId}</td>
-            <td>{soldier.married?"Yes": "No"}<button className="btn btn-outline-info">{soldier.married?"Edit": "Add"}</button>
+            <td>{soldier.married?"Yes": "No"}
+                {soldier.married?<button className="btn btn-outline-info">{soldier.married?"Edit": "Add"}</button>:
+                ""}
             </td>
 
             <td>

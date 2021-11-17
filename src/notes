@@ -28,3 +28,14 @@ https://www.baeldung.com/rest-api-pagination-in-spring
 https://www.bezkoder.com/spring-boot-pagination-filter-jpa-pageable/
 
 Make it responsive to mobile devices and web browsers and tablets
+-----------
+What was used in this application
+1) Bootstrap 5
+2) React hooks (5 hooks-useState, useEffect, useParams, useNavigate (useHistory), useRef
+3) React Router wiht the new Routes vs Switch
+4) React Hook Form (looked into it and will implement it later as refactor)
+5) Spring Security with basic authentication and overriding the default login page
+6) Lombok
+7) Spring Data Rest
+8) https://spring.io/projects/spring-security
+9)https://spring.io/projects/spring-data-rest

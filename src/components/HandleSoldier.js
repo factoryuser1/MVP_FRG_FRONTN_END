@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 // import {useHistory, useNavigate} from 'react-router-dom';
 import {Link, useNavigate, useParams} from 'react-router-dom';
 import {addNewSoldier, getSoldierById, updateSoldier} from "../services/SoldierService";
@@ -19,10 +19,12 @@ function HandleSoldier() {
     const [unit, setUnit] = useState('');
     const [dodId, setDodId] = useState('');
     const [married, setMarried] = useState();//do not assign boolean state for checkbox, otherwise, checkbox will not be checked upon render
-
+    const [error, setError] = useState('');
     const navigate = useNavigate();
     // const history = useHistory();
     const {id} = useParams();
+    let firstNameFocus = useRef('');
+
 
     function resetPage() {
         setFirstName('');
@@ -39,6 +41,7 @@ function HandleSoldier() {
         setUnit('');
         setDodId('');
         setMarried(true);
+        setError('');
         navigate('/soldier');
 
     }
@@ -61,12 +64,14 @@ function HandleSoldier() {
             dodId: dodId,
             married: married
         };
-        console.log("soldier data object from react form after submit " + newSoldier); //soldier data object from react form after submit
-        if(id > 0){
+        firstNameFocus.current.focus();
+        if(id){
             updateSoldier(id, newSoldier).then((soldier)=>{
                 console.log("Inside UpdateSoldier " + soldier.data) //soldier data object returned from backend API after post
                 resetPage();
             }).catch((e)=>{
+                setError(e.response.data.message);
+                // alert(e.response.data.message);
                 console.error(e);
             })
         } else if(id === undefined){
@@ -74,7 +79,8 @@ function HandleSoldier() {
                 console.log("Inside AddNewSoldier" + soldier.data) //soldier data object returned from backend API after post
                 resetPage();
             }).catch(e => {
-                alert(e.response.data.message);
+                setError(e.response.data.message);
+                // alert(e.response.data.message);
                 console.error(e);
             });
         }
@@ -123,6 +129,7 @@ function HandleSoldier() {
                         {title()}
                         <div className="card-body">
                             <form>
+                                {error && <div className="alert alert-danger">{error}</div>}
                                 <div className="form-check mb-2">
                                     <label htmlFor="married" className="form-check-label">Married</label>
                                     <input id="married" type="checkbox" name="married" value={married}
@@ -133,7 +140,7 @@ function HandleSoldier() {
                                     <div className="input-group-prepend">
                                         <span className="input-group-text" id="inputGroup-sizing-sm">First Name</span>
                                     </div>
-                                    <input type="text" className="form-control" aria-label="Small"
+                                    <input ref = {firstNameFocus} type="text" className="form-control" aria-label="Small"
                                            aria-describedby="inputGroup-sizing-sm"
                                            name={"firstName"}
                                            placeholder="Enter First Name"
